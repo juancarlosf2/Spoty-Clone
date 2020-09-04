@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { images } from "../../components/images";
-import { accessUrl } from "../../spotify";
+import { accessUrl } from "../../api/spotify";
 import "./style.css";
 
 function Login(): ReactElement {

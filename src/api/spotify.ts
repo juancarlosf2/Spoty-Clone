@@ -11,17 +11,17 @@ const scopes = [
   "user-modify-playback-state",
 ];
 
-// export const getTokenFromResponse = () => {
-//   return window.location.hash
-//     .substring(1)
-//     .split("&")
-//     .reduce((initial: object, item: string) => {
-//       let parts = item.split("=");
-//       // initial[parts[0]] = decodeURIComponent(parts[1]);
+export const getTokenFromResponse = () => {
+  return window.location.hash
+    .substring(1)
+    .split("&")
+    .reduce((initial: Record<string, any>, item: string) => {
+      let parts = item.split("=");
+      initial[parts[0]] = decodeURIComponent(parts[1]);
 
-//       return initial;
-//     }, {});
-// };
+      return initial;
+    }, {});
+};
 
 export const accessUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
   "%20"
