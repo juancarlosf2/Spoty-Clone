@@ -18,9 +18,18 @@ export const getTokenFromResponse = () => {
     .reduce((initial: Record<string, any>, item: string) => {
       let parts = item.split("=");
       initial[parts[0]] = decodeURIComponent(parts[1]);
-
       return initial;
     }, {});
+
+  // var url = new URL(window.location.href).searchParams.get("#Access_token");
+
+  // const getParam = (param: string) => {
+  //   console.log(window.location);
+  //   return new URLSearchParams(window.location.hash).get(param);
+  // };
+
+  // const token = getParam("#access_token");
+  // console.log(url);
 };
 
 export const accessUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
