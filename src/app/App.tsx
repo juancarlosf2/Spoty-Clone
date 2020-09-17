@@ -1,30 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-import Login from "./screens/Login";
+import Login from "../screens/Login";
 import SpotifyWebApi from "spotify-web-api-js";
-import { getTokenFromResponse } from "./api/spotify";
+import { getTokenFromResponse } from "../api/spotify";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./RootReducer";
+import {
+  setDiscoveryWeekly,
+  setPlaying,
+  setPlaylists,
+  setToken,
+  setTopArtists,
+  setUser,
+} from "../slices/spotySlice";
+import DiscoverWeekly from "../screens/DiscoverWeekly";
+
 // changes
 const spotify = new SpotifyWebApi();
+
 function App() {
-  const [token, setToken] = useState<string | null>(null);
-  const getState = () => {
-    const hash = getTokenFromResponse();
+  const dispatch = useDispatch();
+  const { token } = useSelector((state: RootState) => state.spotify);
+  useEffect(() => {
+    const _token = getTokenFromResponse();
     window.location.hash = "";
 
-    const _token = hash.access_token;
+    // const _token = hash.access_token;
 
-    console.log(_token);
+    dispatch(setPlaying(true));
     if (_token) {
-      setToken(_token);
+      dispatch(setToken(_token));
       spotify.setAccessToken(_token);
 
-      spotify.getMe();
+      spotify
+        .getPlaylist("37i9dQZF1DX7QOv5kjbU68")
+        .then((res) => dispatch(setDiscoveryWeekly(res)))
+        .catch((e) => console.log(e));
+
+      spotify
+        .getMyTopArtists()
+        .then((res) => dispatch(setTopArtists(res)))
+        .catch((e) => console.log(e));
+
+      spotify
+        .getMe()
+        .then((user) => dispatch(setUser(user)))
+        .catch((e) => console.log(e));
+
+      spotify
+        .getUserPlaylists()
+        .then((res) => dispatch(setPlaylists(res)))
+        .catch((e) => console.log(e));
     }
-  };
-  getTokenFromResponse();
+    console.log(token);
+  }, [token, dispatch]);
+
   return (
     <div>
-      <Login />
+      {!token && <Login />}
+      {token && <DiscoverWeekly spotify={spotify} />}
     </div>
   );
 }

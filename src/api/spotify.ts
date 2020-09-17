@@ -12,22 +12,23 @@ const scopes = [
 ];
 
 export const getTokenFromResponse = () => {
-  return window.location.hash
-    .substring(1)
-    .split("&")
-    .reduce((initial: Record<string, any>, item: string) => {
-      let parts = item.split("=");
-      initial[parts[0]] = decodeURIComponent(parts[1]);
-      return initial;
-    }, {});
+  // return window.location.hash
+  //   .substring(1)
+  //   .split("&")
+  //   .reduce((initial: Record<string, any>, item: string) => {
+  //     let parts = item.split("=");
+  //     initial[parts[0]] = decodeURIComponent(parts[1]);
+
+  //     return initial;
+  //   }, {});
 
   // var url = new URL(window.location.href).searchParams.get("#Access_token");
 
-  // const getParam = (param: string) => {
-  //   console.log(window.location);
-  //   return new URLSearchParams(window.location.hash).get(param);
-  // };
-
+  const getParam = (param: string) => {
+    console.log(window.location);
+    return new URLSearchParams(window.location.hash).get(param);
+  };
+  return getParam("#access_token");
   // const token = getParam("#access_token");
   // console.log(url);
 };
