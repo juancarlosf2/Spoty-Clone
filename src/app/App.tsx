@@ -14,6 +14,7 @@ import {
   setUser,
 } from "../slices/spotySlice";
 import DiscoverWeekly from "../screens/DiscoverWeekly";
+import Sidebar from "../components/sidebar";
 
 // changes
 const spotify = new SpotifyWebApi();
@@ -56,9 +57,14 @@ function App() {
   }, [token, dispatch]);
 
   return (
-    <div>
+    <div className="app">
       {!token && <Login />}
-      {token && <DiscoverWeekly spotify={spotify} />}
+      {token && (
+        <>
+          <Sidebar />
+          <DiscoverWeekly spotify={spotify} />
+        </>
+      )}
     </div>
   );
 }
