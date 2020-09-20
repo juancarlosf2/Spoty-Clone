@@ -4,7 +4,7 @@ import { OverridableComponent } from "material-ui-core/OverridableComponent";
 import "./styles.css";
 
 interface Props {
-  Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> | undefined;
+  Icon?: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
   option: string;
 }
 
@@ -13,7 +13,7 @@ function SidebarOption(props: Props): ReactElement {
   return (
     <div className="sidebarOption">
       {Icon && <Icon className="icon" />}
-      <h4 className={Icon ? "mainOption" : "secondaryOption"}>{option}</h4>
+      <span className={Icon ? "navLink" : "playlistLinks"}>{option}</span>
     </div>
   );
 }

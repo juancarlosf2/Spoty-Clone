@@ -10,7 +10,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 type CurrentState = {
   user: User | null;
   token: string | null;
-  playlists: Playlist[];
+  playlists: Playlist | null;
   topArtists: TopArtists | null;
   isPlaying: boolean;
   discoverWeekly: DiscoverWeekly | null;
@@ -19,7 +19,7 @@ type CurrentState = {
 
 const initialState: CurrentState = {
   user: null,
-  playlists: [],
+  playlists: null,
   discoverWeekly: null,
   topArtists: null,
   isPlaying: false,
@@ -47,7 +47,7 @@ const spotify = createSlice({
       state.topArtists = action.payload;
     },
     setPlaylists(state, action: PayloadAction<Playlist>) {
-      state.playlists.push(action.payload);
+      state.playlists = action.payload;
     },
     setItem(state, action: PayloadAction<CurrentPlayback>) {
       state.item = action.payload;

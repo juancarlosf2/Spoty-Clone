@@ -14,7 +14,7 @@ import {
   setUser,
 } from "../slices/spotySlice";
 import DiscoverWeekly from "../screens/DiscoverWeekly";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/sidebar/";
 
 // changes
 const spotify = new SpotifyWebApi();

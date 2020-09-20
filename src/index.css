@@ -1,28 +1,22 @@
 @font-face {
   font-family: "Circular Std book";
   src: url(../src/assets/fonts/Circular\ Std\ Book.ttf);
-  font-weight: 400;
-  font-style: normal;
 }
 @font-face {
   font-family: "Circular Std medium";
   src: url(../src/assets/fonts/Circular\ Std\ Medium.ttf);
-  font-style: normal;
 }
 @font-face {
   font-family: "Circular Std bold";
   src: url(../src/assets/fonts/Circular\ Std\ Bold.ttf);
-  font-style: normal;
 }
 @font-face {
   font-family: "Circular Std black";
   src: url(../src/assets/fonts/Circular\ Std\ Black.ttf);
-  font-style: normal;
 }
 @font-face {
   font-family: "Circular Std Air";
   src: url(../src/assets/fonts/Circular\ Air\ Light.ttf);
-  font-style: normal;
 }
 body {
   margin: 0;

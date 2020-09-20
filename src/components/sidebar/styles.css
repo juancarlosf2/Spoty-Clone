@@ -2,8 +2,8 @@
   display: flex;
   cursor: pointer;
   align-items: center;
-  height: 40px;
-  color: grey;
+  height: 36px;
+  color: #8c8c8c;
   transition: 200ms color ease-in;
 }
 
@@ -18,13 +18,19 @@
 }
 
 .icon {
-  height: 24;
-  width: 24;
+  height: 18;
+  width: 18;
 }
 
-.sidebarOption > h4 {
-  font-family: "circular std bold";
+.sidebarOption > span {
+  font-size: 13px;
+}
+
+.navLink {
   margin-left: 10px;
-  font-size: 15px;
-  line-height: auto;
+  font-family: "circular std bold";
+}
+
+.playlistLinks {
+  font-family: "circular std medium";
 }
