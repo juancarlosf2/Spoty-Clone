@@ -13,7 +13,8 @@
 
 .left {
   display: flex;
-  flex-grow: 3;
+  flex-basis: 940px;
+  flex-shrink: 3;
   flex-direction: row;
   align-items: center;
 }
@@ -32,11 +33,12 @@ span {
 }
 
 .center {
-  flex-grow: 1;
+  flex-basis: 575px;
+  flex-shrink: 1;
 }
 
 .right {
-  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .line {

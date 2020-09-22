@@ -11,9 +11,10 @@
   background: #3a3a3a;
 }
 
-img {
-  height: 40;
-  width: 40;
+.imagen {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
 }
 
 .infoContainer {
@@ -30,9 +31,10 @@ img {
   height: 40px;
 }
 
-.left {
+.izquierda {
   display: flex;
-  flex-grow: 3;
+  flex-basis: 940px;
+  flex-shrink: 3;
   flex-direction: row;
   align-items: center;
 }
@@ -56,7 +58,6 @@ img {
   color: #8d8d8d;
   align-self: flex-start;
   text-transform: none;
-  letter-spacing: 1px;
 }
 
 .index {
@@ -66,10 +67,11 @@ img {
   align-self: center;
 }
 
-.center {
-  flex-grow: 1;
+.centro {
+  flex-basis: 550px;
+  flex-shrink: 1;
 }
 
 .right {
-  flex-grow: 1;
+  flex-shrink: 1;
 }

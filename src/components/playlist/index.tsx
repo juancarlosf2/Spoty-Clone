@@ -45,16 +45,8 @@ function Playlist(props: Props): ReactElement {
       </div>
       {discoverWeekly?.tracks.items.map((item, index) => {
         const { track } = item;
-        return (
-          <SongRow
-            img={item.track.uri}
-            index={index + 1}
-            title={track.name}
-            author={track.uri}
-            album={track.name}
-            timeDuration={track.duration_ms.toString()}
-          />
-        );
+        const newTrack = track as SpotifyApi.TrackObjectFull;
+        return <SongRow track={newTrack} index={index + 1} />;
       })}
     </div>
   );

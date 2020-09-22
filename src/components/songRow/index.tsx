@@ -2,32 +2,29 @@ import React, { ReactElement } from "react";
 import "./styles.css";
 
 interface Props {
-  img: string | undefined;
-  index: number | undefined;
-  title: string | undefined;
-  author: string | undefined;
-  album: string | undefined;
-  timeDuration: string | undefined;
+  track: SpotifyApi.TrackObjectFull;
+  index: number;
 }
 
 function SongRow(props: Props): ReactElement {
-  const { img, index, title, author, album, timeDuration } = props;
+  const { track, index } = props;
+  const { album, name, artists, duration_ms } = track;
   return (
     <div className="contenedor">
       <div className="labels">
-        <div className="left">
+        <div className="izquierda">
           <span className="index">{index}</span>
-          <img src={img} alt="" />
+          <img className="imagen" src={album.images[0].url} alt="" />
           <div className="infoContainer">
-            <h4 className="title">{title}</h4>
-            <caption className="author">{author}</caption>
+            <h4 className="title">{name}</h4>
+            <caption className="author">{artists[0].name}</caption>
           </div>
         </div>
-        <div className="center">
-          <h6 className="info">{album}</h6>
+        <div className="centro">
+          <h6 className="info">{album.name}</h6>
         </div>
         <div className="right">
-          <h6 className="info">{timeDuration}</h6>
+          <h6 className="info">{duration_ms}</h6>
         </div>
       </div>
     </div>
