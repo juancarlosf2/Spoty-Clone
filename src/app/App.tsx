@@ -15,6 +15,7 @@ import {
 } from "../slices/spotySlice";
 import DiscoverWeekly from "../screens/DiscoverWeekly";
 import Sidebar from "../components/sidebar/";
+import Header from "../components/header";
 
 // changes
 const spotify = new SpotifyWebApi();
@@ -62,6 +63,7 @@ function App() {
       {token && (
         <>
           <Sidebar />
+          <Header />
           <DiscoverWeekly spotify={spotify} />
         </>
       )}

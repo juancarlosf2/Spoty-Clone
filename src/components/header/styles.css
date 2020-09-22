@@ -1,0 +1,26 @@
+.right {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.right > button {
+  border-radius: 16px;
+  background-color: rgb(51, 51, 51, 0.8);
+  color: #fff;
+  padding: 5px 20px;
+  height: 32px;
+  border: none;
+  margin-left: 15px;
+  font-size: 15px;
+  font-family: "circular std medium";
+  transition: 200ms ease-in;
+}
+
+.right > button:hover {
+  background-color: rgb(51, 51, 51, 1);
+  cursor: pointer;
+}
+.right > h1 {
+}

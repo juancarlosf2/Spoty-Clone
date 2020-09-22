@@ -7,6 +7,7 @@ import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import SidebarOption from "./option";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/RootReducer";
+import { images } from "../images";
 
 const useStyles = makeStyles({
   sideBar: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles({
     textTransform: "uppercase",
     lineHeight: "15px",
     color: "#8C8C8C",
+    fontFamily: "circular std book",
   },
   br: {
     border: "1px solid rgba(140, 140, 140, 0.2)",
@@ -54,11 +56,7 @@ function Sidebar(): ReactElement {
         classes={{ paper: classes.sideBar }}
       >
         <div>
-          <img
-            src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
-            className={classes.logo}
-            alt=""
-          />
+          <img src={images.spotifyLogo} className={classes.logo} alt="" />
           <div className={classes.mainLinks}>
             <SidebarOption Icon={HomeIcon} option="Home" />
             <SidebarOption Icon={SearchIcon} option="Search" />

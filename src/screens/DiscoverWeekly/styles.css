@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 30px;
+  background-color: #0a0a0a;
+}
+
+.discoverContainer {
+  display: flex;
+  padding: 0 0px 30px 30px;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0.24) 100%
+    ),
+    #155a8b;
+  box-shadow: 0px 35px 70px rgba(21, 90, 139, 0.35);
+  border: none;
+  z-index: 1;
+}
+
+.actionBarRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+}
