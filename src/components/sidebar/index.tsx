@@ -12,20 +12,21 @@ import { images } from "../images";
 const useStyles = makeStyles({
   sideBar: {
     backgroundColor: "#000",
-    width: "200px",
+    width: "240px",
+    zIndex: 0,
   },
   logo: {
-    height: "70px",
+    height: "100px",
     objectFit: "contain",
     padding: "10px",
   },
   mainLinks: {
     display: "flex",
     flexDirection: "column",
-    padding: "0 15px",
+    padding: "0 20px",
   },
   playlistsContainer: {
-    paddingLeft: "15px",
+    paddingLeft: "20px",
     marginTop: "15px",
     display: "flex",
     flexDirection: "column",
@@ -51,8 +52,8 @@ function Sidebar(): ReactElement {
   return (
     <React.Fragment>
       <Drawer
+        anchor="left"
         variant="permanent"
-        className={classes.sideBar}
         classes={{ paper: classes.sideBar }}
       >
         <div>

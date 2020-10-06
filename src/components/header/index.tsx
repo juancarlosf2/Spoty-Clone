@@ -11,7 +11,7 @@ import { RootState } from "../../app/RootReducer";
 import ElevationScroll from "./ElevationScroll";
 import "./styles.css";
 
-const drawerWidth = 200;
+const drawerWidth = 240;
 
 const useStyles = makeStyles({
   toolBar: {

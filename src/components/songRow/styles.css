@@ -1,17 +1,26 @@
 .contenedor {
   border-radius: 5px;
-  padding: 8px 30px;
+  padding: 8px 0;
+  margin: 0 30px;
 }
 
 .contenedor:hover {
   background: #282828;
 }
+.contenedor:hover > .labels > .centro > .album,
+.author,
+.album {
+  color: white;
+}
 
+.contenedor:hover > .labels > .derecha > .album {
+  color: white;
+}
 .contenedor:active {
   background: #3a3a3a;
 }
 
-.imagen {
+.image {
   height: 40px;
   width: 40px;
   object-fit: contain;
@@ -20,8 +29,9 @@
 .infoContainer {
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  margin-left: 15px;
   align-items: flex-start;
+  justify-content: center;
 }
 .labels {
   display: flex;
@@ -52,18 +62,17 @@
   color: #8c8c8c;
 }
 
-.info {
+.album {
   font-size: 15px;
   font-family: "circular std air";
   color: #8d8d8d;
   align-self: flex-start;
-  text-transform: none;
 }
 
 .index {
   color: #8d8d8d;
-  margin-right: 10px;
-  font-size: 15px;
+  margin-right: 15px;
+  font-size: 1em;
   align-self: center;
 }
 
@@ -72,6 +81,6 @@
   flex-shrink: 1;
 }
 
-.right {
+.derecha {
   flex-shrink: 1;
 }

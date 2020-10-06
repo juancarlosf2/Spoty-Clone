@@ -14,6 +14,7 @@ export interface Spotify extends SpotifyWebApi.SpotifyWebApiJs {}
 
 export interface CurrentPlayback extends SpotifyApi.CurrentPlaybackResponse {}
 
+export interface Item extends SpotifyApi.TrackObjectFull {}
 export interface Playing {
   playing: boolean;
 }

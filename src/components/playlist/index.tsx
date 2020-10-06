@@ -24,6 +24,7 @@ const useStyles = makeStyles({
 });
 function Playlist(props: Props): ReactElement {
   const { discoverWeekly } = props;
+
   const classes = useStyles();
   return (
     <div className="container">
@@ -37,7 +38,7 @@ function Playlist(props: Props): ReactElement {
           <div className="center">
             <h6 className="label">album</h6>
           </div>
-          <div className="right">
+          <div className="derecha">
             <AvTimer className={classes.timer} />
           </div>
         </div>
@@ -46,7 +47,7 @@ function Playlist(props: Props): ReactElement {
       {discoverWeekly?.tracks.items.map((item, index) => {
         const { track } = item;
         const newTrack = track as SpotifyApi.TrackObjectFull;
-        return <SongRow track={newTrack} index={index + 1} />;
+        return <SongRow track={newTrack} index={index + 1} key={index} />;
       })}
     </div>
   );

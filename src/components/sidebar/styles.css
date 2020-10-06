@@ -11,19 +11,13 @@
   color: white;
 }
 
-.sidebar > hr {
-  border: 1px solid #282828;
-  width: 90%;
-  margin: 10px auto;
-}
-
 .icon {
   height: 18;
   width: 18;
 }
 
 .sidebarOption > span {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .navLink {

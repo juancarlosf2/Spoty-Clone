@@ -1,10 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import {
-  Favorite,
-  FavoriteBorderOutlined,
-  MoreHoriz,
-  PlayCircleFilled,
-} from "@material-ui/icons";
+import { Favorite, MoreHoriz, PlayCircleFilled } from "@material-ui/icons";
 import React, { ReactElement } from "react";
 import { useSelector } from "react-redux";
 import { Spotify } from "../../api/types";
@@ -16,7 +11,7 @@ interface Props {
   spotify: Spotify;
 }
 
-const drawerWidth = 200;
+const drawerWidth = 240;
 
 const useStyles = makeStyles({
   container: {
@@ -40,9 +35,9 @@ const useStyles = makeStyles({
     marginLeft: "15px",
   },
 });
-export default function DiscoverWeekly({ spotify }: Props): ReactElement {
+export default function DiscoverWeekly(props: Props): ReactElement {
+  const { spotify } = props;
   const { discoverWeekly } = useSelector((state: RootState) => state.spotify);
-
   const classes = useStyles();
   return (
     <div className={classes.container}>

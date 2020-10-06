@@ -4,6 +4,7 @@ import {
   TopArtists,
   CurrentPlayback,
   DiscoverWeekly,
+  Item,
 } from "./../api/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -14,7 +15,7 @@ type CurrentState = {
   topArtists: TopArtists | null;
   isPlaying: boolean;
   discoverWeekly: DiscoverWeekly | null;
-  item: CurrentPlayback | null;
+  item: Item | null;
 };
 
 const initialState: CurrentState = {
@@ -49,7 +50,7 @@ const spotify = createSlice({
     setPlaylists(state, action: PayloadAction<Playlist>) {
       state.playlists = action.payload;
     },
-    setItem(state, action: PayloadAction<CurrentPlayback>) {
+    setItem(state, action: PayloadAction<Item | null>) {
       state.item = action.payload;
     },
   },

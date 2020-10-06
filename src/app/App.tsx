@@ -16,12 +16,14 @@ import {
 import DiscoverWeekly from "../screens/DiscoverWeekly";
 import Sidebar from "../components/sidebar/";
 import Header from "../components/header";
+import { AppDispatch } from "./Store";
+import Player from "../components/player";
 
 // changes
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { token } = useSelector((state: RootState) => state.spotify);
   useEffect(() => {
     const _token = getTokenFromResponse();
@@ -62,9 +64,10 @@ function App() {
       {!token && <Login />}
       {token && (
         <>
-          <Sidebar />
           <Header />
+          <Sidebar />
           <DiscoverWeekly spotify={spotify} />
+          <Player spotify={spotify} />
         </>
       )}
     </div>
