@@ -2,8 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import {
   AppBar,
-  Avatar,
-  IconButton,
   makeStyles,
   Toolbar,
 } from "@material-ui/core";
