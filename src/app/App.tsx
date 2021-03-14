@@ -3,8 +3,6 @@ import "./App.css";
 import Login from "../screens/Login";
 import SpotifyWebApi from "spotify-web-api-js";
 import { getTokenFromResponse } from "../api/spotify";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./RootReducer";
 import {
   setDiscoveryWeekly,
   setPlaying,
@@ -16,47 +14,45 @@ import {
 import DiscoverWeekly from "../screens/DiscoverWeekly";
 import Sidebar from "../components/sidebar/";
 import Header from "../components/header";
-import { AppDispatch } from "./Store";
+import { useThunkDispatch, useTypedSelector } from "./Store";
 import Player from "../components/player";
 
 // changes
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const dispatch = useDispatch<AppDispatch>();
-  const { token } = useSelector((state: RootState) => state.spotify);
+  const dispatch = useThunkDispatch();
+  const { token } = useTypedSelector((state) => state.spotify);
   useEffect(() => {
     const _token = getTokenFromResponse();
     window.location.hash = "";
 
     // const _token = hash.access_token;
-
+    async function fn () {
     dispatch(setPlaying(true));
     if (_token) {
       dispatch(setToken(_token));
       spotify.setAccessToken(_token);
 
-      spotify
-        .getPlaylist("37i9dQZF1DX7QOv5kjbU68")
-        .then((res) => dispatch(setDiscoveryWeekly(res)))
-        .catch((e) => console.log(e));
+      try {
+        const playlistId = "37i9dQZF1DX7QOv5kjbU68";
+        const playlist = await spotify.getPlaylist(playlistId);
+        dispatch(setDiscoveryWeekly(playlist));
+        
+        const topArtists = await spotify.getMyTopArtists();
+        dispatch(setTopArtists(topArtists));
+        
+        const me = await spotify.getMe();
+        dispatch(setUser(me));
+        
+        const userPlayLists = await spotify.getUserPlaylists();
+        dispatch(setPlaylists(userPlayLists));
+      } catch(error) {
+          throw error;
+      };
+    }}
+    fn();
 
-      spotify
-        .getMyTopArtists()
-        .then((res) => dispatch(setTopArtists(res)))
-        .catch((e) => console.log(e));
-
-      spotify
-        .getMe()
-        .then((user) => dispatch(setUser(user)))
-        .catch((e) => console.log(e));
-
-      spotify
-        .getUserPlaylists()
-        .then((res) => dispatch(setPlaylists(res)))
-        .catch((e) => console.log(e));
-    }
-    console.log(token);
   }, [token, dispatch]);
 
   return (
