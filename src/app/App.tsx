@@ -23,6 +23,7 @@ const spotify = new SpotifyWebApi();
 function App() {
   const dispatch = useThunkDispatch();
   const { token } = useTypedSelector((state) => state.spotify);
+  
   useEffect(() => {
     const _token = getTokenFromResponse();
     window.location.hash = "";

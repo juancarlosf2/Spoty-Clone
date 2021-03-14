@@ -1,8 +1,6 @@
 import React, { ReactElement, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Item, Spotify } from "../../api/types";
-import { RootState } from "../../app/RootReducer";
-import { AppDispatch } from "../../app/Store";
+import { useThunkDispatch, useTypedSelector } from "../../app/Store";
 import { setItem, setPlaying } from "../../slices/spotySlice";
 import PlayerStructure from "./PlayerStructure";
 
@@ -12,8 +10,8 @@ interface Props {
 
 function Player(props: Props): ReactElement {
   const { spotify } = props;
-  const dispatch = useDispatch<AppDispatch>();
-  const { isPlaying, item } = useSelector((state: RootState) => state.spotify);
+  const dispatch = useThunkDispatch();
+  const { isPlaying, item } = useTypedSelector((state) => state.spotify);
   useEffect(() => {
     getPlaybackState();
   }, [spotify]);
@@ -62,7 +60,7 @@ function Player(props: Props): ReactElement {
         handlePlayPause={handlePlayPause}
         skipToNext={skipToNext}
         skipToPrevious={skipToPrevious}
-        isPlaying={isPlaying}
+        isPlaying={isPlaying as boolean}
         item={item as Item}
       />
     </React.Fragment>

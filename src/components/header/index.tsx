@@ -1,13 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import {
   AppBar,
   makeStyles,
   Toolbar,
 } from "@material-ui/core";
-import { RootState } from "../../app/RootReducer";
 import ElevationScroll from "./ElevationScroll";
 import "./styles.css";
+import { useTypedSelector } from "../../app/Store";
 
 const drawerWidth = 240;
 
@@ -23,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 function Header() {
-  const { user } = useSelector((state: RootState) => state.spotify);
+  const { user } = useTypedSelector((state) => state.spotify);
   const classes = useStyles();
   return (
     <ElevationScroll>

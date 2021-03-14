@@ -5,9 +5,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import SidebarOption from "./option";
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/RootReducer";
 import { images } from "../images";
+import { useTypedSelector } from "../../app/Store";
 
 const useStyles = makeStyles({
   sideBar: {
@@ -47,7 +46,7 @@ const useStyles = makeStyles({
 });
 
 function Sidebar(): ReactElement {
-  const { playlists } = useSelector((state: RootState) => state.spotify);
+  const { playlists } = useTypedSelector((state) => state.spotify);
   const classes = useStyles();
   return (
     <React.Fragment>
