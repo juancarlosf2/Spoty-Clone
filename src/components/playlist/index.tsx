@@ -1,13 +1,16 @@
 import React, { ReactElement } from "react";
-import { CssBaseline, Divider } from "@material-ui/core";
+import { CssBaseline } from "@material-ui/core";
 import { AvTimer } from "@material-ui/icons";
-import { DiscoverWeekly } from "../../api/types";
+import { DiscoverWeekly, Spotify } from "../../api/types";
 import "./styles.css";
 import { makeStyles } from "material-ui-core";
 import SongRow from "../songRow";
+import { useThunkDispatch } from "../../app/Store";
+import { setItem, setPlaying } from "../../slices/spotySlice";
 
 interface Props {
   discoverWeekly: DiscoverWeekly | null;
+  spotify: Spotify
 }
 
 const useStyles = makeStyles({
@@ -23,9 +26,22 @@ const useStyles = makeStyles({
   },
 });
 function Playlist(props: Props): ReactElement {
-  const { discoverWeekly } = props;
-
+  const { discoverWeekly, spotify } = props;
   const classes = useStyles();
+  const dispatch = useThunkDispatch()
+
+  const playSong = async (id: string) => {
+    const uris = [`spotify:track:${id}`];
+    try {
+      await spotify.play({uris: uris});
+      const response = await spotify.getMyCurrentPlayingTrack();
+      dispatch(setItem(response.item));
+      dispatch(setPlaying(true));
+    } catch (error) {
+      throw error;
+    }
+  }
+
   return (
     <div className="container">
       <CssBaseline />
@@ -47,7 +63,7 @@ function Playlist(props: Props): ReactElement {
       {discoverWeekly?.tracks.items.map((item, index) => {
         const { track } = item;
         const newTrack = track as SpotifyApi.TrackObjectFull;
-        return <SongRow track={newTrack} index={index + 1} key={index} />;
+        return <SongRow track={newTrack} playSong={playSong} index={index + 1} key={index} />;
       })}
     </div>
   );

@@ -4,11 +4,12 @@ import "./styles.css";
 interface Props {
   track: SpotifyApi.TrackObjectFull;
   index: number;
+  playSong: (id: string) => Promise<void>;
 }
 
 function SongRow(props: Props): ReactElement {
-  const { track, index } = props;
-  const { album, name, artists, duration_ms } = track;
+  const { track, index, playSong } = props;
+  const { album, name, artists, duration_ms, id } = track;
   const millisToMinutesAndSeconds = (millis: number) => {
     var minutes = Math.floor(millis / 60000);
     var seconds = parseInt(((millis % 60000) / 1000).toFixed(0));
@@ -18,15 +19,17 @@ function SongRow(props: Props): ReactElement {
   const duration_min = millisToMinutesAndSeconds(duration_ms);
   const authors = artists.map((artist) => artist.name).join(", ");
 
+  const onPlaySong = () => playSong(id);
+
   return (
-    <div className="contenedor">
+    <div className="contenedor" onClick={onPlaySong}>
       <div className="labels">
         <div className="izquierda">
           <span className="index">{index}</span>
           <img className="image" src={album.images[0].url} alt="" />
           <div className="infoContainer">
             <h4 className="title">{name}</h4>
-            <caption className="author">{authors}</caption>
+            <span className="author">{authors}</span>
           </div>
         </div>
         <div className="centro">
