@@ -2,5 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: green;
+  background: linear-gradient(
+      180deg,
+      #000000 28.97%,
+      rgba(1, 1, 1, 0.97) 28.98%,
+      rgba(34, 34, 34, 0.06) 100%
+    ),
+    #0a0a0a;
 }
