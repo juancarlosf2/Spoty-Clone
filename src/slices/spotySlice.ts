@@ -9,24 +9,16 @@ import {
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type CurrentState = {
-  user: User | null;
-  token: string | null;
-  playlists: Playlist | null;
-  topArtists: TopArtists | null;
+  user: User;
+  token: string;
+  playlists: Playlist;
+  topArtists: TopArtists;
   isPlaying: boolean;
-  discoverWeekly: DiscoverWeekly | null;
+  discoverWeekly: DiscoverWeekly;
   item: Item | null;
 };
 
-const initialState: CurrentState = {
-  user: null,
-  playlists: null,
-  discoverWeekly: null,
-  topArtists: null,
-  isPlaying: false,
-  item: null,
-  token: null,
-};
+const initialState: Partial<CurrentState> = {} as CurrentState;
 
 const spotify = createSlice({
   name: "spoty",
