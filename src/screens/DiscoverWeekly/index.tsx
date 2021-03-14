@@ -1,9 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 import { Favorite, MoreHoriz, PlayCircleFilled } from "@material-ui/icons";
 import React, { ReactElement } from "react";
-import { useSelector } from "react-redux";
-import { Spotify } from "../../api/types";
-import { RootState } from "../../app/RootReducer";
+import { DiscoverWeekly as DiscoverWeeklyType, Spotify } from "../../api/types";
+import { useTypedSelector } from "../../app/Store";
 import Playlist from "../../components/playlist";
 import DiscoverSection from "./discoverSection";
 import "./styles.css";
@@ -37,20 +36,22 @@ const useStyles = makeStyles({
 });
 export default function DiscoverWeekly(props: Props): ReactElement {
   const { spotify } = props;
-  const { discoverWeekly } = useSelector((state: RootState) => state.spotify);
+  const { discoverWeekly } = useTypedSelector((state) => state.spotify);
   const classes = useStyles();
   return (
     <div className={classes.container}>
       <div className="container">
         <div className="discoverContainer">
-          <DiscoverSection discoverWeekly={discoverWeekly} />
+          <DiscoverSection
+            discoverWeekly={discoverWeekly as DiscoverWeeklyType}
+          />
         </div>
         <div className="actionBarRow">
           <PlayCircleFilled className={classes.playButton} />
           <Favorite className={classes.favoriteIcon} />
           <MoreHoriz className={classes.moreIcon} />
         </div>
-        <Playlist discoverWeekly={discoverWeekly} />
+        <Playlist discoverWeekly={discoverWeekly as DiscoverWeeklyType} spotify={spotify} />
       </div>
     </div>
   );
